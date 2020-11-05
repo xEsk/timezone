@@ -1,12 +1,16 @@
 {
-    "name": "scottconnerly/timezone",
-    "description": "Bringing Ruby on Rails' time zone list to PHP.",
+    "name": "beecubu/timezone",
+    "description": "Simple TimeZone PHP library (based on Scott Connerly timezone library).",
     "license": "GPL-2.0-only",
-    "keywords": ["timezone"],
+    "keywords": ["timezone", "PHP"],
     "authors": [
         {
-            "name": "Scott connerly",
+            "name": "Scott Connerly",
             "email": "scott@connerly.net"
+        },
+        {
+            "name": "Beecubu",
+            "email": "email": "contact@beecubu.com"
         }
     ],
     "require": {},
