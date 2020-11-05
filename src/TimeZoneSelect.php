@@ -85,9 +85,12 @@ class TimeZoneSelect {
         // Prep varrs and arrays that wil lbe accessed but not yet created
         $identifiers = array();
         $tzData = [];
-        $tzJson = file_get_contents(__DIR__."/../tzid.json");
-        $tzs = json_decode($tzJson);
-        
+        // build time zones data set
+        foreach (timezone_identifiers_list() as $item)
+        {
+            $tzs[str_replace('_', ' ', $item)] = $item;
+        }
+        // init timezone
         $defaultTimeZone = date_default_timezone_get();
         date_default_timezone_set('UTC'); //Is this problematic for larger systems to load this file? Should we return it to its value?
         $i = 0;
