@@ -33,7 +33,7 @@ class TimeZoneSelect {
         if (!empty($params['country'])) {
             $params['priority_zones'] = DateTimeZone::listIdentifiers(DateTimeZone::PER_COUNTRY, $params['country']);
             //$params['priority_label'] = locale_get_display_region('-'.$params['country'], 'en');
-            $params['priority_label'] = $params['country'];
+            $params['priority_label'] = $params['country_label'] ?? $params['country'];
         }
         if (empty($params['priority_label'])) $priority_label = 'Regional';
         
@@ -99,6 +99,7 @@ class TimeZoneSelect {
             $offsetFormatted = static::formatOffset($offsetSeconds);
 
             //there could be multiple (in no reliable order), so lets pick the best match, in a fuzzy way.
+            if ($tzinfoIdentifier === 'UTC') continue;
             list($major, $minor) = explode('/', $tzinfoIdentifier, 2);
             $levenshtein = levenshtein($nameDisplay, $minor);
             //although, I did like this too: http://stackoverflow.com/a/5430851/218967
